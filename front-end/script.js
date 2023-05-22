@@ -82,7 +82,7 @@ sortSelect.addEventListener("change", () => {
 });
 
 function searchProducts(searchQuery, storeFilter, brandFilter, priceFilter) {
-  fetch("http://localhost:5000", {
+  fetch("https://web-crawler-gbk2.onrender.com/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
