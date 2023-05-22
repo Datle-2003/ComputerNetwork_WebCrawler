@@ -39,11 +39,13 @@ function sortProducts(products, sortOption) {
 }
 
 function displayProducts(products) {
-  if (products.length !== 0) {
+  if (products.length == 0) {
+    console.log("No products found");
     const sort = document.getElementById("sort-bar");
-    sort.style.display = "block";
-  } else {
     sort.style.display = "none";
+  } else {
+    console.log("Displaying products");
+    sort.style.display = "block";
   }
   const productList = document.querySelector(".product-list");
   productList.innerHTML = "";
