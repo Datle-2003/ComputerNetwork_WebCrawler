@@ -1,4 +1,10 @@
 {
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "server": "nodemon server"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
