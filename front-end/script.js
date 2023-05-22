@@ -39,9 +39,9 @@ function sortProducts(products, sortOption) {
 }
 
 function displayProducts(products) {
+  const sort = document.getElementById("sort-bar");
   if (products.length == 0) {
     console.log("No products found");
-    const sort = document.getElementById("sort-bar");
     sort.style.display = "none";
   } else {
     console.log("Displaying products");
