@@ -54,11 +54,6 @@ function displayProducts(products) {
     const li = document.createElement("li");
     li.classList.add("product");
 
-    const img = document.createElement("img");
-    img.src = "laptop.jpg";
-    img.alt = p.Name;
-    li.appendChild(img);
-
     const h3 = document.createElement("h3");
     h3.textContent = p.name;
     li.appendChild(h3);
