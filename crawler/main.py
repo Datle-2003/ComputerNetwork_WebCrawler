@@ -114,5 +114,3 @@ while True:
     else:
         # The command failed, so wait for a bit and try again
         time.sleep(10)
-
-
