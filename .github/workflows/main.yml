@@ -34,6 +34,5 @@ jobs:
           pip install psycopg2 urllib3 python-dotenv selenium scrapy
       - name: Run crawler
         run: |
-          cd ..
-          cd ..
-          python crawler/main.py
+          cd crawler
+          python main.py
