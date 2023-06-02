@@ -28,23 +28,24 @@ CONCURRENT_REQUESTS_PER_IP = 16
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-#    "Accept-Language": "en",
-#}
+DEFAULT_REQUEST_HEADERS = {
+   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+   "Accept-Language": "en",
+}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
 #    "crawler.middlewares.CrawlerSpiderMiddleware": 543,
 #}
+LOG_LEVEL = 'ERROR'
+LOG_STDOUT = False
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     "crawler.middlewares.CrawlerDownloaderMiddleware": 543,
 }
-
 
 #EXTENSIONS = {
 #    "scrapy.extensions.telnet.TelnetConsole": None,
@@ -68,15 +69,6 @@ ITEM_PIPELINES = {
 #AUTOTHROTTLE_DEBUG = False
 
 # Configure the PostgreSQL database
-DATABASES = {
-    'default': {
-        'HOST': 'localhost',
-        'PORT': '5432',
-        'NAME': 'Data',
-        'USER': 'postgres',
-        'PASSWORD': '123',
-    }
-}
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings

@@ -27,7 +27,6 @@ const client = new Client({
   ssl: sslConfig,
 });
 
-
 async function connectToDatabase() {
   try {
     await client.connect();
@@ -44,26 +43,12 @@ app.get("/", async (req, res) => {
   });
 });
 
-
-// async function getProductImage(url, website) {
-//   const browser = await puppeteer.launch();
-//   const page = await browser.newPage();
-//   await page.goto(url);
-//   const imageUrl = await page.evaluate(() => {
-//     const img = document.querySelector('img.product-image');
-//     return img ? img.src : null;
-//   });
-//   await browser.close();
-//   return imageUrl;
-// }
-
-
 app.post("/", async (req, res) => {
   // req is a list parameter include [keyword, website_name, laptop_type, price]
-console.log(1);
+  console.log(1);
   //  xử lý price
   let maxPrice = 200;
-  let minPrice = 0;                                        
+  let minPrice = 0;
   if (req.body.price !== "") {
     if (req.body.price === "lt15") {
       maxPrice = 15;
@@ -75,7 +60,7 @@ console.log(1);
       maxPrice = values[1];
     }
   }
- 
+
   let query = `SELECT * FROM items WHERE name LIKE '%${req.body.keyword}%'`;
 
   if (req.body.website_name !== "") {
@@ -83,15 +68,21 @@ console.log(1);
   }
 
   if (req.body.laptop_type !== "") {
-    query += ` AND type = '${req.body.laptop_type}'`;
+    if (req.body.laptop_type == "macbook") {
+      query += ` AND type = 'macbook' OR type = 'apple'`;
+    } else {
+      query += ` AND type = '${req.body.laptop_type}'`;
+    }
   }
 
   if (req.body.price !== "") {
-    query += ` AND price BETWEEN ${minPrice * 1000000} AND ${maxPrice * 1000000}`;
+    query += ` AND price BETWEEN ${minPrice * 1000000} AND ${
+      maxPrice * 1000000
+    }`;
   }
-console.log(2);
+  console.log(2);
   const results = await client.query(query);
-  
+
   const response = { results: [] };
   results.rows.forEach(async (result) => {
     response.results.push({
@@ -100,7 +91,7 @@ console.log(2);
       type: result.type,
       price: result.price,
       link: result.link,
-    //  image: await getProductImage(result.link, result.website),
+      //  image: await getProductImage(result.link, result.website),
     });
   });
 
