@@ -58,13 +58,14 @@ function displayProducts(products) {
     h3.textContent = p.name;
     li.appendChild(h3);
 
-    const pTag = document.createElement("p");
-    pTag.textContent = `${p.price}đ`;
-    li.appendChild(pTag);
+    const price = document.createElement("p");
+    price.textContent = `${p.price.toLocaleString()} đ`; // Định dạng giá
+    li.appendChild(price);
 
     const a = document.createElement("a");
     a.href = p.link;
     a.textContent = "Visit website";
+    a.target = "_blank";
     li.appendChild(a);
 
     productList.appendChild(li);
