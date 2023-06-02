@@ -45,8 +45,6 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   // req is a list parameter include [keyword, website_name, laptop_type, price]
-  console.log(1);
-  //  xử lý price
   let maxPrice = 200;
   let minPrice = 0;
   if (req.body.price !== "") {
@@ -68,8 +66,8 @@ app.post("/", async (req, res) => {
   }
 
   if (req.body.laptop_type !== "") {
-    if (req.body.laptop_type == "macbook") {
-      query += ` AND type = 'macbook' OR type = 'apple'`;
+    if (req.body.laptop_type === "macbook") {
+      query += ` AND (type = 'macbook' OR type = 'apple')`;
     } else {
       query += ` AND type = '${req.body.laptop_type}'`;
     }
@@ -80,7 +78,6 @@ app.post("/", async (req, res) => {
       maxPrice * 1000000
     }`;
   }
-  console.log(2);
   const results = await client.query(query);
 
   const response = { results: [] };
