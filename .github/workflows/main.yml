@@ -17,14 +17,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1.2.0
-        with:
-          chrome-version: "latest"
-      - name: Download Chrome Driver
-        run: |
-          Invoke-WebRequest "https://chromedriver.storage.googleapis.com/LATEST_RELEASE" -OutFile "latest.txt"
-          $latest = Get-Content -Path "latest.txt"
-          Invoke-WebRequest "https://chromedriver.storage.googleapis.com/$($latest)/chromedriver_win32.zip" -OutFile "chromedriver.zip"
-          Expand-Archive -Path "chromedriver.zip" -DestinationPath "."
+        
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
