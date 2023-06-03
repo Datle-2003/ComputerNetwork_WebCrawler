@@ -45,7 +45,7 @@ cur.execute("""
 # ''')
 
 
-cur.execute("""select * from items where website = 'fptshop' and type = 'MacBook' order by item_id desc""")
+cur.execute("""select * from items""")
 
 results = cur.fetchall()
 
