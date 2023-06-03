@@ -2,6 +2,8 @@ import os
 import time
 import psycopg2
 import urllib.parse as urlparse
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -23,12 +25,8 @@ try:
     conn.commit()
 except psycopg2.Error as e:
      print(f"Error: {e}")
-
-
 conn.commit()
 
-cur.close()
-conn.close()
 
 
 
@@ -114,3 +112,9 @@ while True:
     else:
         # The command failed, so wait for a bit and try again
         time.sleep(10)
+
+
+
+cur.execute("""update items set type = 'Macbook' where type = 'Apple'""")
+cur.close()
+conn.close()

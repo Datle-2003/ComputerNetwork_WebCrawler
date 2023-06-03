@@ -75,7 +75,7 @@ class FptShopSpider(scrapy.Spider):
                 if (type_value == "Microsoft" or type_value == "microsoft"):
                     type_value = "Surface"
                 yield {
-                    'website': 'fptshop',
+                    'website': 'fpt',
                     'name': name,
                     'image_link': image_link,
                     'type': type_value,

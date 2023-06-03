@@ -59,25 +59,16 @@ app.post("/", async (req, res) => {
     }
   }
 
-  let query = `SELECT * FROM items WHERE name LIKE '%${req.body.keyword}%'`;
+  let query = `SELECT * FROM items WHERE name ILIKE '%${req.body.keyword}%'`;
 
   if (req.body.website_name !== "") {
-    query += ` AND website = '${req.body.website_name}'`;
+    query += ` AND website ILIKE '${req.body.website_name}'`;
   }
 
   if (req.body.laptop_type !== "") {
-    if (req.body.laptop_type === "macbook") {
-      query += ` AND (type = 'macbook' OR type = 'apple')`;
-    } else {
-      query += ` AND type = '${req.body.laptop_type}'`;
-    }
+      query += ` AND type ILIKE '${req.body.laptop_type}'`;
   }
 
-  if (req.body.price !== "") {
-    query += ` AND price BETWEEN ${minPrice * 1000000} AND ${
-      maxPrice * 1000000
-    }`;
-  }
   const results = await client.query(query);
 
   const response = { results: [] };

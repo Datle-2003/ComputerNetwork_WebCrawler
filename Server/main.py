@@ -45,12 +45,13 @@ cur.execute("""
 # ''')
 
 
-cur.execute("""select * from items""")
+cur.execute("""select * from items where website = 'fptshop' and type = 'MacBook' order by item_id desc""")
 
 results = cur.fetchall()
 
 for row in results:
     print(row)
+
 
 conn.commit()
 
