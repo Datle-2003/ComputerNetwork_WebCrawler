@@ -63,9 +63,8 @@ function displayProducts(products) {
 
     const price = document.createElement("p");
     const oldPrice = p.price;
-    const formattedPrice = formatPrice(p.price);
+    const formattedPrice = formatPrice(oldPrice);
     price.textContent = formattedPrice;
-    p.price = oldPrice;
     li.appendChild(price);
 
     const a = document.createElement("a");
