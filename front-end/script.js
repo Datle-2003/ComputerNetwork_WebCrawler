@@ -66,7 +66,8 @@ function displayProducts(products) {
     li.appendChild(h3);
 
     const price = document.createElement("p");
-    price.textContent = `${p.price.toLocaleString()} đ`; // Định dạng giá
+    temp = p.price.toLocaleString();
+    price.textContent = `${temp} đ`; // Định dạng giá
     li.appendChild(price);
 
     const a = document.createElement("a");
