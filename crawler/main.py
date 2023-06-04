@@ -10,7 +10,7 @@ load_dotenv()
 
 url = os.getenv('database_url')
 url_parsed = urlparse.urlparse(url)
-
+time.sleep(5)
 try:
     with psycopg2.connect(
             host=url_parsed.hostname,
@@ -20,7 +20,7 @@ try:
             database=url_parsed.path[1:]
     ) as conn:
         with conn.cursor() as cur:
-            cur.execute("DROP TABLE IF EXISTS public.items")
+            cur.execute("""DELETE FROM items WHERE website <> 'thegioididong'""")
             conn.commit()
 
             cur.execute("""CREATE TABLE IF NOT EXISTS items (
