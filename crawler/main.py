@@ -96,7 +96,7 @@ try:
             database=url_parsed.path[1:]
     ) as conn:
         with conn.cursor() as cur:
-            cur.execute("""UPDATE items SET type ILIKE 'Macbook' WHERE type ILIKE 'Apple'""")
+            cur.execute("""UPDATE items SET type = 'Macbook' WHERE type ILIKE 'Apple'""")
             conn.commit()
 except psycopg2.Error as e:
     print(f"Database Error: {e}")
