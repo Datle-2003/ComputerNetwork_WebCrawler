@@ -11,6 +11,11 @@ function convertToProductArray(list) {
   });
 }
 
+function formatPrice(price) {
+  const formattedPrice = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return `${formattedPrice} đ`;
+}
+
 function updateProductList() {
   const productList = document.querySelector(".product-list");
   const productArray = convertToProductArray(
@@ -66,8 +71,7 @@ function displayProducts(products) {
     li.appendChild(h3);
 
     const price = document.createElement("p");
-    temp = p.price.toLocaleString();
-    price.textContent = `${temp} đ`; // Định dạng giá
+    price.textContent = formatPrice(p.price);
     li.appendChild(price);
 
     const a = document.createElement("a");
