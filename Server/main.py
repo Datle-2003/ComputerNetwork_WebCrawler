@@ -45,7 +45,7 @@ cur.execute("""
 # ''')
 
 
-cur.execute("""select * from items""")
+cur.execute("""select * from items order by item_id asc""")
 
 results = cur.fetchall()
 

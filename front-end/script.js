@@ -19,17 +19,24 @@ function updateProductList() {
   return productArray;
 }
 
-
 function sortProducts(products, sortOption) {
   let sortedProducts;
   console.log("Sorting products:", products);
   switch (sortOption) {
     case "low-high":
-      sortedProducts = products.sort((a, b) => a.price - b.price);
+      sortedProducts = products.sort((a, b) => {
+        const priceA = parseInt(a.price.replace(/\./g, ""));
+        const priceB = parseInt(b.price.replace(/\./g, ""));
+        return priceA - priceB;
+      });
       console.log("Sorted products (low-high):", sortedProducts);
       return sortedProducts;
     case "high-low":
-      sortedProducts = products.sort((a, b) => b.price - a.price);
+      sortedProducts = products.sort((a, b) => {
+        const priceA = parseInt(a.price.replace(/\./g, ""));
+        const priceB = parseInt(b.price.replace(/\./g, ""));
+        return priceB - priceA;
+      });
       console.log("Sorted products (high-low):", sortedProducts);
       return sortedProducts;
     default:
