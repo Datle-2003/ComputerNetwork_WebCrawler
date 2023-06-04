@@ -11,11 +11,6 @@ function convertToProductArray(list) {
   });
 }
 
-function formatPrice(price) {
-  const formattedPrice = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  return `${formattedPrice} đ`;
-}
-
 function updateProductList() {
   const productList = document.querySelector(".product-list");
   const productArray = convertToProductArray(
